@@ -22,10 +22,14 @@ E.g.
 
 Assuming you've changed nothing else you can find the outputs of a successful run
 
-at /tmp/tidal/comments and /tmp/tidal/submissions
+at 
 
-Data taken from a sample is stored in tidal_data.zip and can be unzipped and explored with something like
+`/tmp/tidal/comments`
 
-parquet-tools.
+and 
+
+`/tmp/tidal/submissions`
+
+Data taken from a sample run is stored in tidal_data.zip and can be unzipped and explored with something like parquet-tools.
 
 
