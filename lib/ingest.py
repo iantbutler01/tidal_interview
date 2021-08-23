@@ -18,7 +18,7 @@ from pyspark.sql.types import IntegerType, \
     ArrayType, \
     FloatType
 
-from lib.api import RedditApiWrapper
+from lib import api
 
 from requests import HTTPError
 
@@ -88,7 +88,7 @@ def filter_item_for_schema(item, schema):
 
 
 def pull_items_for_timespan(hour_span, submissions=False):
-    api_wrapper = RedditApiWrapper("TIdaL")
+    api_wrapper = api.RedditApiWrapper("TIdaL")
 
     span_end = hour_span
     span_start = int((datetime.datetime.fromtimestamp(hour_span) - datetime.timedelta(hours=1)).timestamp())
@@ -146,7 +146,7 @@ def ingest(date):
 
     hour_spans = [int(date.timestamp())]
 
-    for i in range(1, 24):
+    for i in range(1, 25):
         hour_span = date - datetime.timedelta(hours=i)
         hour_spans.append(int(hour_span.timestamp()))
 

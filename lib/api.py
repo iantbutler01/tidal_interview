@@ -31,7 +31,6 @@ class RedditApiWrapper():
                 self.config[k] = v.strip()
 
     def pull_comments(self, before, after):
-        print("NOOOOOOOOOOOOOOOOOOOOOOOO")
         api_base_uri = self.config["api_base_uri"]
         api_comments_endpoint = self.config["api_comments_endpoint"]
         response_size = self.config["api_response_number_of_elements"]

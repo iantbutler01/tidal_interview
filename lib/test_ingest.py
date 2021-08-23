@@ -11,13 +11,15 @@ class TestItemsArePulled(unittest.TestCase):
             instance = mock.return_value
             instance.pull_comments.return_value = []
 
-            mock_calls = [call.pull_comments()]
-
             today = datetime.date.today()
             today = datetime.datetime.combine(today, datetime.datetime.min.time())
             date = today
 
-            pull_items_for_timespan(int(date.timestamp()))
+            timestamp = int(date.timestamp())
+            timestamp_end = int((date - datetime.timedelta(hours=1)).timestamp())
+
+            mock_calls = [call("TIdaL"), call().pull_comments(timestamp, timestamp_end)]
+            pull_items_for_timespan(timestamp)
 
             assert mock.mock_calls == mock_calls
 
@@ -26,15 +28,16 @@ class TestItemsArePulled(unittest.TestCase):
             instance = mock.return_value
             instance.pull_submissions.return_value = []
 
-            mock_calls = [call.pull_submissions()]
-
             today = datetime.date.today()
             today = datetime.datetime.combine(today, datetime.datetime.min.time())
             date = today
+            timestamp = int(date.timestamp())
+            timestamp_end = int((date - datetime.timedelta(hours=1)).timestamp())
+            pull_items_for_timespan(timestamp, True)
 
-            pull_items_for_timespan(int(date.timestamp()), True)
+            mock_calls = [call("TIdaL"), call().pull_submissions(timestamp, timestamp_end)]
 
-            print(mock.mock_calls)
+            print(mock.mock_calls, mock_calls)
 
             assert mock.mock_calls == mock_calls
 
