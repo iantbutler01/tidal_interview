@@ -1,0 +1,4 @@
+api_base_uri=https://api.pushshift.io
+api_comments_endpoint=/reddit/search/comment
+api_submissions_endpoint=/reddit/search/submission
+api_response_number_of_elements=500
